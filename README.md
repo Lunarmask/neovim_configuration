@@ -1,11 +1,19 @@
-## NEOVIM CONFIG from Lunarmask_
+```
+    _   __                _
+   / | / /__  ____ _   __(_)___ ___
+  /  |/ / _ \/ __ \ | / / / __ `__ \
+ / /|  /  __/ /_/ / |/ / / / / / / /
+/_/ |_/\___/\____/|___/_/_/ /_/ /_/_____
+                                 /_____/
+```
+##NEOVIM CONFIG by Lunarmask_
 
 ---
 
 * This config assumes you are using __[NeoVim](https://neovim.io/)__ as your vim source.  
 * I would also like to recommend using __Alacritty__ for your terminal emulator.
 __[Alacritty](https://github.com/alacritty/alacritty)__ paired
-with __[tmux](https://github.com/tmux/tmux)__ makes for a killer combo!
+with __[Tmux](https://github.com/tmux/tmux)__ makes for a killer combo!
 
 
 ---------
@@ -27,7 +35,7 @@ Firstly, you will need to install this config into your nvim folder.
 Secondly, this config doesn't make much sense without installing the proper plugins.  
 This config assumes you are going to use VIM-Plug to manage your vim plugins.  
 
-2) Install VIM-Plug https://github.com/junegunn/vim-plug You can either:  
+2) Install __[VIM-Plug](https://github.com/junegunn/vim-plug)__ You can either:  
   * Run one of the install scripts on the page for your vim version.  
   * Download `plug.vim` and place it into your _`~/.local/share/nvim/site/autoload/`_ folder.  
 
@@ -37,9 +45,9 @@ Thirdly, we will need to install the plugins through VIM-Plug.
   * __nvim__ will likely give you an error complaining about referenced plugin modules
 not being installed. This goes away after we install them.
 
-*Optional but recommended*
-4) CoC plugin provides Intellisense like LSPs for various languages. __[See Here](https://github.com/neoclide/coc.nvim/wiki/Language-servers)__  
-  Install them using `:CocIntall coc-solargraph elixir-ls` for ruby and elixir, respectively
+_*Optional but recommended*_  
+4) CoC plugin provides Intellisense like LSPs for various languages.  __[See Here](https://github.com/neoclide/coc.nvim/wiki/Language-servers)__  
+  Install them using `:CocInstall coc-solargraph elixir-ls` for ruby and elixir, respectively
 
 __You're all set!__
 
@@ -111,13 +119,14 @@ This small guide will try to cover the gaps from this config.
 `<` or `>` Will indent (by one margin) the selected row(s) left or right, respectively  
 `,fp` Alias for `vip=` which reflows the indentation for the paragraph  
 
-`ds<bracket>`  Removes the surrounding _<bracket>_ `{hello world} -> ds} -> hello world`  
-`yss<bracket>` Surround line with _<bracket>_ `hello world -> yss" -> "hello world"`  
-`ysw<bracket>` Surround word with _<bracket>_ `hello world -> ysw_ -> _hello_ world`  
-`yst<object><bracket>` Surround up to object with _<bracket>_  
-  * Example `This will make a fine addition to my collection`  
-  *         `-> ysfy]`  
-  *         `-> [This will make a fine addition to my] collection`  
+`ds<bracket>`  Removes the surrounding \<bracket\> `{hello world} -> ds} -> hello world`  
+`yss<bracket>` Surround line with \<bracket\> `hello world -> yss" -> "hello world"`  
+`ysw<bracket>` Surround word with \<bracket\> `hello world -> ysw_ -> _hello_ world`  
+`yst<object><bracket>` Surround everything up to \<object\> with \<bracket\>  
+
+example  
+`This will make a fine addition to my collection` enter `ysfy]`  
+`=> [This will make a fine addition to my] collection`  
 
 `,s` Enable spellcheck; `,so` Disable spellcheck  
 `[s` Go to previous misspelled word  
