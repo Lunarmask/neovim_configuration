@@ -37,6 +37,10 @@ Thirdly, we will need to install the plugins through VIM-Plug.
   * __nvim__ will likely give you an error complaining about referenced plugin modules
 not being installed. This goes away after we install them.
 
+*Optional but recommended*
+4) CoC plugin provides Intellisense like LSPs for various languages. __[See Here](https://github.com/neoclide/coc.nvim/wiki/Language-servers)__  
+  Install them using `:CocIntall coc-solargraph elixir-ls` for ruby and elixir, respectively
+
 __You're all set!__
 
 ### VIM GUIDE
@@ -59,28 +63,37 @@ This small guide will try to cover the gaps from this config.
 `<C-w>o` Maximize the current pane  
 `<C-w>=` Make all panes the same size  
 
-`,qa`   Close out of all panes  
 `,qq`   Close out of selected pane  
+`,qa`   Close out of all panes  
 
 
 ---------------
 ##### Searching
 
-`/`     Search document for _{regex}_<br>  
-`#`     When cursor is over a word, highlight all instances in the document<br>  
-`n`     Jump to the next instance of highlighted word<br>  
-`N`     Jump to previous instance of highlighted word<br>  
-`,h`    Turn off search highlighting<br>  
-`,a`    Recursively search project for instances of _{regex}_ `:Ack {regex} <starting folder>`<br>  
-`<C-p>` FuzzyFinder<br>  
-`gf`    When cursor is on a module_name; jump to module<br>  
+`/`     Search document for _{regex}_  
+`#`     When cursor is over a word, highlight all instances in the document  
+`,h`    Turn off search highlighting  
+`gf`    When cursor is on a module_name; jump to module  
+
+`n`     Jump to the next instance of highlighted word  
+`N`     Jump to previous instance of highlighted word  
+
+`,a`    Recursively search project for instances of _{regex}_ `:Ack {regex} <starting folder>`  
+`,aw`   Recursively search project for instances of _word_  
+
+`<C-p>` FuzzyFinder  
+
+`:%s/find/replace/g` Find and replace instance of word 'find' with 'replace' within document  
 
 
 ---------------
-##### NerdTree
+##### Plugin Hotkeys
 
 `,n` Toggle NerdTree open/closed  
 `x`  Close parent-directory  
+
+`,c` Enable CoC plugin  
+`,co` Disable CoC plugin  
 
 
 ------------------
@@ -96,11 +109,26 @@ This small guide will try to cover the gaps from this config.
 `,c<spacebar>` Will comment/uncomment the row(s) selected  
 
 `<` or `>` Will indent (by one margin) the selected row(s) left or right, respectively  
+`,fp` Alias for `vip=` which reflows the indentation for the paragraph  
 
 `ds<bracket>`  Removes the surrounding _<bracket>_ `{hello world} -> ds} -> hello world`  
 `yss<bracket>` Surround line with _<bracket>_ `hello world -> yss" -> "hello world"`  
+`ysw<bracket>` Surround word with _<bracket>_ `hello world -> ysw_ -> _hello_ world`  
+`yst<object><bracket>` Surround up to object with _<bracket>_  
+  * Example `This will make a fine addition to my collection`  
+  *         `-> ysfy]`  
+  *         `-> [This will make a fine addition to my] collection`  
 
-`"+y` Yank into System Clipboard (+)  
-`"+p` Paste from System Clipboard (+)  
-* The `+` In the above examples, could be any value. Some registers are special  
+`,s` Enable spellcheck; `,so` Disable spellcheck  
+`[s` Go to previous misspelled word  
+`]s` Go to the next misspelled word  
+`z=` when on a misspelled word, opens the suggestion menu  
+`zg` Add word to whitelist  
+`zw` Mark word as misspelled  
+
+`"*y` Yank into yank-buffer '*'  
+`"*p` Paste from yank-buffer '*'  
+* The `*` In the above examples could be any value, but some registers are special.  
+* `+` is the system clipboard. This config uses `+` as the default yank-buffer.  
+* Read about special buffers in the vim-cheat-sheet linked above.  
 
