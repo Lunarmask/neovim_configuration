@@ -6,7 +6,7 @@
 /_/ |_/\___/\____/|___/_/_/ /_/ /_/_____
                                  /_____/
 ```
-## NEOVIM CONFIG by Lunarmask_
+##NEOVIM CONFIG by Lunarmask_
 
 ---
 
