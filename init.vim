@@ -9,31 +9,43 @@
 " -----------------------
 "   Main Config Options
 " -----------------------
+"
+" Use <shift-k> to lookup the help entry for any of these settings.
 
 let mapleader = ","
 
 " Use two spaces for tabs/indenting
-set tabstop=2 shiftwidth=2 expandtab
+set tabstop=2 shiftwidth=2 expandtab smartindent
 
 " We love utf-8
 set fileencodings=utf8 encoding=utf-8
 
+" Show relative ruler
+set nu rnu
+
 " Miscellaneous options
-set rnu nowrap list hidden nofoldenable
+set nowrap list hidden nofoldenable
 syntax=on
 
 " Set the yank buffer be the same as my regular clipboard
 set clipboard+=unnamedplus
 
+" Smartcase searching
+set ignorecase smartcase
+
 " Show find/replace results pane
 set inccommand=split
 
+" Managing buffer items
+set noswapfile nobackup
+set undofile undodir=~/.config/nvim/
+
 " Prevent lines from becoming too long; show page-width limit
 set textwidth=80
-let &colorcolumn='80'
+let &colorcolumn=&textwidth
 highlight ColorColumn ctermbg=235
 
-" Set project path as current dir; Needed for go-find file
+" Set project path as current dir; Needed for go-find file (gf)
 set path=$PWD,$PWD/**
 
 " Ignore bulky rails folders (hidden folders are ignored by default)
@@ -81,8 +93,8 @@ Plug 'ap/vim-css-color'
 Plug 'sheerun/vim-polyglot'
 Plug 'chrisbra/csv.vim'
 Plug 'wsdjeg/vim-fetch'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'unblevable/quick-scope'
+" Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 call plug#end()
 
