@@ -36,10 +36,6 @@ set ignorecase smartcase
 " Show find/replace results pane
 set inccommand=split
 
-" Managing buffer items
-set noswapfile nobackup
-set undofile undodir=~/.config/nvim/
-
 " Prevent lines from becoming too long; show page-width limit
 set textwidth=80
 let &colorcolumn=&textwidth
@@ -168,14 +164,21 @@ nnoremap <leader>h :noh<CR>
 nnoremap <leader>w :w<CR>
 
 " Yank word
-nnoremap <leader>y viwy<CR>
+nnoremap <leader>y viwy
 
 " Fast exit
 nnoremap <leader>qq :q!<CR>
 nnoremap <leader>qa :qa!<CR>
 
+" Quick upcase/downcase
+nnoremap <leader>u viwgU
+nnoremap <leader>d viwgu
+
 " Reflow paragraph
 nnoremap <leader>fp vip=
+
+" FormatArray
+nnoremap <leader>fa :call FormatArray()<CR>
 
 " Ack for word
 nnoremap <leader>a :Ack!<space>
@@ -193,8 +196,7 @@ nnoremap <leader>c :CocEnable<CR>
 nnoremap <leader>co :CocDisable<CR>
 
 " Output story card number
-" nnoremap <leader>ep :r ! git branch | grep \* | grep -o 'master\|EP-\d\{4\}'
-command EPV r ! git branch | grep \* | grep -o 'master\|EP-\d\{4\}'
+nnoremap <leader>ep :call StoryNumber()<CR>
 
 " Remove all trailing whitespace in document
 command Rms %s/\s\+$\|\r//g
@@ -212,3 +214,5 @@ ab cab Co-authored-by:
 " Populate the co_authors files with those you pair with!
 source ~/.config/nvim/co_authors
 
+" Functions
+source ~/.config/nvim/functions.vim
