@@ -21,11 +21,14 @@ set tabstop=2 shiftwidth=2 expandtab smartindent
 set fileencodings=utf8 encoding=utf-8
 
 " Show relative ruler
-set nu rnu
+set number relativenumber
 
 " Miscellaneous options
-set nowrap list hidden nofoldenable
+set nowrap list hidden nofoldenable wildmenu cursorline
 syntax=on
+
+" Screen doesn't refresh during macros
+set lazyredraw
 
 " Set the yank buffer be the same as my regular clipboard
 set clipboard+=unnamedplus
@@ -90,7 +93,7 @@ Plug 'sheerun/vim-polyglot'
 Plug 'chrisbra/csv.vim'
 Plug 'wsdjeg/vim-fetch'
 Plug 'unblevable/quick-scope'
-" Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'Lunarmask/specr.vim'
 
 call plug#end()
 
@@ -160,13 +163,15 @@ nnoremap <silent> <C-p> :FZF<CR>
 nnoremap <C-W>o :NERDTreeClose<CR><C-W>_<C-W>\|
 nnoremap <leader>n :NERDTreeToggle<CR>
 nnoremap <leader>h :noh<CR>
+nnoremap <leader>rr :set nornu<CR>
+nnoremap <leader>ru :set rnu<CR>
 
 nnoremap <leader>w :w<CR>
 
 " Yank word
 nnoremap <leader>y viwy
 
-" Fast exit
+" Alternative Fast exit
 nnoremap <leader>qq :q!<CR>
 nnoremap <leader>qa :qa!<CR>
 
@@ -181,19 +186,16 @@ nnoremap <leader>fp vip=
 nnoremap <leader>fa :call FormatArray()<CR>
 
 " Ack for word
-nnoremap <leader>a :Ack!<space>
+nnoremap <leader>a<space> :Ack!<space>
 nnoremap <leader>aw viwy:Ack!\ <C-R><C-R>+<cr>
+nnoremap <leader>ac <C-w>9j:q<CR>
 
 " Enable/disable spellcheck
 nnoremap <leader>s :setlocal spell spelllang=en_us<CR>
 nnoremap <leader>so :set nospell<CR>
 
 " Run ruby spec
-nnoremap <leader>t :TestFile<CR>
-
-" Enable/disable CoC plugin
-nnoremap <leader>c :CocEnable<CR>
-nnoremap <leader>co :CocDisable<CR>
+nnoremap <leader>t <Plug>Specr
 
 " Output story card number
 nnoremap <leader>ep :call StoryNumber()<CR>
