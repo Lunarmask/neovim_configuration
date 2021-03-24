@@ -40,7 +40,7 @@ set ignorecase smartcase
 set inccommand=split
 
 " Prevent lines from becoming too long; show page-width limit
-set textwidth=80
+set textwidth=120
 let &colorcolumn=&textwidth
 highlight ColorColumn ctermbg=235
 
@@ -93,6 +93,12 @@ Plug 'sheerun/vim-polyglot'
 Plug 'chrisbra/csv.vim'
 Plug 'wsdjeg/vim-fetch'
 Plug 'unblevable/quick-scope'
+
+" # Telescope && Dependencies
+Plug 'nvim-lua/popup.nvim'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
+
 Plug 'Lunarmask/specr.vim'
 
 call plug#end()
@@ -111,9 +117,9 @@ let g:syntastic_check_on_wq = 0
 " Vim-Rainbow enable
 let g:rainbow_active = 1
 
-" Use silver-searcher for Ack if installed
-if executable('ag')
-  let g:ackprg = 'ag --vimgrep'
+" Use ripgrep for Ack if installed
+if executable('rg')
+  let g:ackprg = 'rg --vimgrep'
 endif
 
 " Start NERDtree when opened with a directory
@@ -128,7 +134,7 @@ highlight QuickScopePrimary guifg='#00C7DF' gui=underline ctermfg=155 cterm=unde
 highlight QuickScopeSecondary guifg='#afff5f' gui=underline ctermfg=81 cterm=underline
 
 " vim-quickscope max length
-let g:qs_max_chars=80
+let g:qs_max_chars=&textwidth
 
 
 " -----------------------
