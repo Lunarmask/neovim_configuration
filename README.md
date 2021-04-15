@@ -141,3 +141,16 @@ example
 * `+` is the system clipboard. This config uses `+` as the default yank-buffer.  
 * Read about special buffers in the vim-cheat-sheet linked above.  
 
+
+------------------
+##### Git Commit Validation
+
+There are now git specific functions that will validate the "properness" of your commit messages.  
+- The subject-line should not be more than 60 characters long.  
+- There should be a blank line underneath the subject-line.  
+- The lines of the commit-body should not exceed 120 characters in length.  
+  * Lots of people use 60 for the length... but it's the yeat 20XX and people have widescreen monitors now...  
+- If validations are broken, the commit will not writen. You will have to `:set write` to try again.  
+
+__ALSO__, you reaally should always use `git commit -v`.
+If you are not leaving enough documentation within your messages, then why bother? =)  

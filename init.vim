@@ -71,28 +71,27 @@ set nowritebackup
 
 call plug#begin('~/.config/nvim/plugged')
 
-Plug 'bronson/vim-trailing-whitespace'
+Plug 'bronson/vim-trailing-whitespace'                   " Highlight trailing whitespace
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-endwise'
-Plug 'neomake/neomake'
-Plug 'ervandew/supertab'
-Plug 'mileszs/ack.vim'
-Plug 'preservim/nerdtree'
-Plug 'preservim/nerdcommenter'
-Plug 'terryma/vim-multiple-cursors'
-Plug 'vim-syntastic/syntastic'
+Plug 'neomake/neomake'                                   " Asynchronous lintiing
+Plug 'ervandew/supertab'                                 " Tab completion
+Plug 'mileszs/ack.vim'                                   " Regex search project
+Plug 'preservim/nerdtree'                                " File navigation pane
+Plug 'preservim/nerdcommenter'                           " Easily comment out code
+Plug 'terryma/vim-multiple-cursors'                      " Edit multiple lines at the same time
+Plug 'vim-syntastic/syntastic'                           " Syntax checking
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'vim-test/vim-test'
-Plug 'skwp/vim-spec-finder'
-Plug 'frazrepo/vim-rainbow'
-Plug 'ap/vim-css-color'
-Plug 'sheerun/vim-polyglot'
-Plug 'chrisbra/csv.vim'
-Plug 'wsdjeg/vim-fetch'
-Plug 'unblevable/quick-scope'
+Plug 'frazrepo/vim-rainbow'                              " Colorcoated paranthesis/brackets
+Plug 'ap/vim-css-color'                                  " Adds colors to background layer
+Plug 'sheerun/vim-polyglot'                              " A collection of language packs for Vim
+Plug 'chrisbra/csv.vim'                                  " Format CSV data into columns
+Plug 'wsdjeg/vim-fetch'                                  " Open file at line specified
+Plug 'unblevable/quick-scope'                            " More accurate character jumping
+Plug 'psliwka/vim-smoothie'                              " Implement scroll smoothing
 
 " # Telescope && Dependencies
 Plug 'nvim-lua/popup.nvim'
@@ -136,6 +135,9 @@ highlight QuickScopeSecondary guifg='#afff5f' gui=underline ctermfg=81 cterm=und
 " vim-quickscope max length
 let g:qs_max_chars=&textwidth
 
+" Smothie update interval
+let g:smoothie_update_interval = 10
+let g:smoothie_speed_exponentiation_factor = 1.0
 
 " -----------------------
 "       Statusline
@@ -200,6 +202,9 @@ nnoremap <leader>ac <C-w>9j:q<CR>
 nnoremap <leader>s :setlocal spell spelllang=en_us<CR>
 nnoremap <leader>so :set nospell<CR>
 
+" Disable smoothie
+nnoremap <leader>ns :let g:smoothie_enabled=0<CR>
+
 " Run ruby spec
 nnoremap <leader>t <Plug>Specr
 
@@ -222,5 +227,7 @@ ab cab Co-authored-by:
 " Populate the co_authors files with those you pair with!
 source ~/.config/nvim/co_authors
 
-" Functions
+" Additional Functions
 source ~/.config/nvim/functions.vim
+" Git Validation Functions
+source ~/.config/nvim/git_functions.vim
