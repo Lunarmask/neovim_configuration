@@ -14,6 +14,8 @@ endfunc
 autocmd BufWinEnter COMMIT_EDITMSG :call ForceGitLineWidth()
 func! ForceGitLineWidth()
   set textwidth=120
+  let &colorcolumn=&textwidth
+  highlight ColorColumn ctermbg=235
 endfunc
 
 

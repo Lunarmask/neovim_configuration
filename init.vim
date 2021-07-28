@@ -18,7 +18,7 @@ let mapleader = ","
 set tabstop=2 shiftwidth=2 expandtab smartindent
 
 " We love utf-8
-set fileencodings=utf8 encoding=utf-8
+set fileencodings=utf-8 encoding=utf-8
 
 " Show relative ruler
 set number relativenumber
@@ -48,11 +48,17 @@ highlight ColorColumn ctermbg=235
 set path=$PWD,$PWD/**
 
 " Ignore bulky rails folders (hidden folders are ignored by default)
+let g:rails_dir_ignore = ['node_modules[[dir]]','vendor[[dir]]','bin[[dir]]','coverage[[dir]]','public[[dir]]','tmp[[dir]]']
 set wildignore+=*/node_modules/,*/config/,*/vendor/,*/bin/,*/public/,*/log/,*/coverage/,*/tmp/
-let NERDTreeIgnore = ['node_modules[[dir]]','vendor[[dir]]','bin[[dir]]','coverage[[dir]]','public[[dir]]','tmp[[dir]]']
+
+" Ignore bulky elixir folders (hidden folders are ignored by default)
+let g:elixir_dir_ignore = ['_build[[dir]]', 'deps[[dir]]']
+set wildignore+=*/_build/,*deps/
+
+let NERDTreeIgnore = ( g:rails_dir_ignore + g:elixir_dir_ignore )
 
 " Increase refresh of autocommand events (ms)
-set updatetime=500
+set updatetime=50
 
 " Don't pass messages to |ins-completion-menu|
 set shortmess+=c
@@ -136,8 +142,8 @@ highlight QuickScopeSecondary guifg='#afff5f' gui=underline ctermfg=81 cterm=und
 let g:qs_max_chars=&textwidth
 
 " Smothie update interval
-let g:smoothie_update_interval = 10
-let g:smoothie_speed_exponentiation_factor = 1.0
+"let g:smoothie_update_interval = 10
+"let g:smoothie_speed_exponentiation_factor = 1.0
 
 " -----------------------
 "       Statusline
@@ -176,8 +182,14 @@ nnoremap <leader>ru :set rnu<CR>
 
 nnoremap <leader>w :w<CR>
 
+" Yank filename into system buffer
+nnoremap <leader>yfn :let @+=@%<CR>
+
 " Yank word
 nnoremap <leader>y viwy
+
+" Paste word from yank buffer
+nnoremap <leader>p 0p
 
 " Alternative Fast exit
 nnoremap <leader>qq :q!<CR>
