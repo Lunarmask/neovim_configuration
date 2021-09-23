@@ -1,4 +1,7 @@
-" GIT COMMIT VALIDATION FUNCTIONS
+" ---------------------------------
+"  GIT COMMIT VALIDATION FUNCTIONS
+" ---------------------------------
+
 
 " Output the Story Number during git-commit
 "
@@ -6,6 +9,31 @@ autocmd BufRead COMMIT_EDITMSG :call StoryNumber()
 func! StoryNumber()
   r ! git branch | grep \* | grep -o 'main\|master\|EP-\d\{4\}'
   execute "normal kdd"
+endfunc
+
+
+" Check for binding\.pry before commit
+"
+autocmd BufWinEnter COMMIT_EDITMSG :call BindingPreCheck()
+func! BindingPreCheck()
+  silent redir => capture
+  silent ! rg --line-number "binding\.pry" | grep -o "^.\+:\d\+:"
+  redir END
+  " ^ There is a weird \^M\@\@ prefacing the shell result
+
+  if trim(capture) =~ 'shell returned 1'
+    " happy path
+    " no bindings found
+  else
+    set nowrite
+    echohl WarningMsg
+    echo "WARNING\n"
+    echo "------------------------------------------------\n"
+    echo "There are 'binding.pry' within your project!\n"
+    echo "Please remove them!\n"
+    echo join(split(capture,":")[-3:-2],":")
+    echohl none
+  endif
 endfunc
 
 
