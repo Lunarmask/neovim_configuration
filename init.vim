@@ -99,12 +99,7 @@ Plug 'wsdjeg/vim-fetch'                                  " Open file at line spe
 Plug 'unblevable/quick-scope'                            " More accurate character jumping
 Plug 'psliwka/vim-smoothie'                              " Implement scroll smoothing
 
-" # Telescope && Dependencies
-Plug 'nvim-lua/popup.nvim'
-Plug 'nvim-lua/plenary.nvim'
-Plug 'nvim-telescope/telescope.nvim'
-
-Plug 'Lunarmask/specr.vim'
+Plug 'Lunarmask/specr.vim'                               " Run ruby specs with ease!
 
 call plug#end()
 
